@@ -2,6 +2,7 @@ import { FETCH_POSTS, NEW_POST } from "./types";
 
 // action creator??
 export const fetchPosts = () => (dispatch) => {
+  console.log("fetchPosts called");
   fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
     res.json().then((posts) =>
       /* dispatch state to reducer*/ dispatch({
