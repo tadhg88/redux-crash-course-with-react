@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 // connects components to redux store provided by Provider component
 import { connect } from "react-redux";
 import { fetchPosts } from "../actions/postActions";
@@ -25,6 +26,12 @@ class Posts extends Component {
     );
   }
 }
+
+// run typechecking on the props for a component, issues will be shown as warnings in console
+Posts.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired,
+};
 
 // get new items from the state, mapStateToProps, get state for redux and map it to properties of component
 const mapSateToProps = (state) => ({
