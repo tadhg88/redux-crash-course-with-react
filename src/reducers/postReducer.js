@@ -15,6 +15,13 @@ export default function (state = initialState, action) {
         ...state,
         items: action.payload,
       };
+    case NEW_POST:
+      console.log("postReducer NEW_POST");
+      // normally we would fetch new object from db or somewhere it has been created
+      return {
+        ...state,
+        item: action.payload,
+      };
     default:
       return state;
   }
