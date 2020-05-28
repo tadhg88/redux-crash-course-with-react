@@ -9,6 +9,12 @@ class Posts extends Component {
     this.props.fetchPosts();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.newPost) {
+      this.props.posts.unshift(nextProps.newPost);
+    }
+  }
+
   render() {
     const postItems = this.props.posts.map((post) => (
       <div key={post.id}>
@@ -31,11 +37,13 @@ class Posts extends Component {
 Posts.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
   posts: PropTypes.array.isRequired,
+  newPost: PropTypes.object,
 };
 
 // get new items from the state, mapStateToProps, get state for redux and map it to properties of component
 const mapSateToProps = (state) => ({
   posts: state.posts.items,
+  newPost: state.posts.item,
 });
 
 // map state to properties
